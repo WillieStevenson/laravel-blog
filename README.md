@@ -13,7 +13,7 @@ The reason I built this was because I wanted a small, light-weight, minimalistic
 4. Run `php artisan migrate`.
 5. Start the server with `php artisan serve`.
 6. Register a single user who can post as admin via the url localhost/register.
-7. Close off the register post and get routes by uncommenting the /register routes in the app/Http/routes.php.
+7. Close off the register GET and POST routes that `Route::auth()` uses by uncommenting the /register routes found in app/Http/routes.php.
 8. Do some exploring.
 
 ## Posting
