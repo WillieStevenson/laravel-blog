@@ -52,11 +52,11 @@ Route::group(['middleware' => ['web']], function () {
 
     // Registration Routes...//
     
-    Route::get('register', function(){
-        return view('errors.404');
-    });
-    Route::post('register', function(){
-        return view('errors.404');
-    });
+    // Route::get('register', function(){
+    //     return view('errors.404');
+    // });
+    // Route::post('register', function(){
+    //     return view('errors.404');
+    // });
 
 });
