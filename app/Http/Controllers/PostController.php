@@ -72,12 +72,14 @@ class PostController extends Controller
             'title' => 'bail|required|unique:posts|max:255',
             'body' => 'required',
             'tags' => 'required',
+            'release_at' => 'required|date_format:Y-m-d H:i:s'
         ]);
 
         $request->user()->posts()->create([
             'title' => $request->title,
             'body' => $request->body,
             'tags' => $request->tags,
+            'release_at' => $request->release_at,
             'slug' => str_slug($request->title, "-"),
         ]);
 
@@ -96,6 +98,7 @@ class PostController extends Controller
             'title' => 'bail|required|max:255',
             'body' => 'required',
             'tags' => 'required',
+            'release_at' => 'required|date_format:Y-m-d H:i:s'
         ]);
 
         $request->slug = str_slug($request->title, "-");

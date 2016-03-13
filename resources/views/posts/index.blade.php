@@ -18,7 +18,7 @@
 						{{ csrf_field() }}
 						{{ method_field('PUT') }}
 
-						<!-- Post Name -->
+						<!-- Post Name --><!-- -->
 						<div class="form-group">
 							<label for="post-title" class="col-sm-3 control-label">Title</label>
 
@@ -42,6 +42,15 @@
 
 							<div class="col-sm-6">
 								<input type="text" name="tags" id="post-tags" class="form-control" value="{{ $single_post->tags }}">
+							</div>
+						</div>
+
+						<!-- Post Release Date -->
+						<div class="form-group">
+							<label for="post-release_at" class="col-sm-3 control-label">Release Date</label>
+
+							<div class="col-sm-6">
+								<input type="text" name="release_at" id="post-release_at" class="form-control" value="{{ $single_post->release_at }}">
 							</div>
 						</div>
 
@@ -92,6 +101,15 @@
 
 							<div class="col-sm-6">
 								<input type="text" name="tags" id="post-tags" class="form-control" value="{{ old('tags') }}">
+							</div>
+						</div>
+
+						<!-- Post Release Date -->
+						<div class="form-group">
+							<label for="post-release_at" class="col-sm-3 control-label">Release Date</label>
+
+							<div class="col-sm-6">
+								<input type="text" name="release_at" id="post-release_at" class="form-control" value="<?php echo date('Y-m-d H:i:s'); ?>">
 							</div>
 						</div>
 

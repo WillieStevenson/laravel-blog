@@ -48,7 +48,7 @@ class PostRepository
     {
         DB::table('posts')
             ->where('id', $id)
-            ->update(['title' => $request->title, 'body' => $request->body, 'tags' => $request->tags]);
+            ->update(['title' => $request->title, 'body' => $request->body, 'tags' => $request->tags, 'updated_at' => date('Y-m-d H:i:s'), 'release_at' => $request->release_at]);
     }
 
     /**
@@ -67,35 +67,29 @@ class PostRepository
     }
 
     /**
-     * Get all posts $dateand $lug.
+     * Get all posts .
      *
-     * @param  $date and $slug
+     * @param  none
      * @return Collection
      */
     public function getPost($date, $slug)
     {
         return DB::table('posts')
                     ->join('users', 'posts.user_id', '=', 'users.id')
-                    ->where('posts.updated_at', '>=', $date)
-                    ->where('posts.updated_at', '<', date('Y-m-d',strtotime($date . "+1 days")))
+                    ->where('posts.created_at', '>=', $date)
+                    ->where('posts.created_at', '<', date('Y-m-d',strtotime($date . "+1 days")))
                     ->where('slug', $slug)
                     ->select('posts.*', 'users.name as author')
                     ->get();
     }
 
-    /**
-     * Get posts at date.
-     *
-     * @param  none
-     * @return Collection
-     */
     public function getPostsAtDate($date)
     {
         return DB::table('posts')
                     ->join('users', 'posts.user_id', '=', 'users.id')
-                    ->where('posts.updated_at', '>=', $date)
-                    ->where('posts.updated_at', '<', date('Y-m-d',strtotime($date . "+1 days")))
-                    ->orderBy('updated_at', 'desc')
+                    ->where('posts.created_at', '>=', $date)
+                    ->where('posts.created_at', '<', date('Y-m-d',strtotime($date . "+1 days")))
+                    ->orderBy('created_at', 'desc')
                     ->select('posts.*', 'users.name as author')
                     ->get();
     }

@@ -21,6 +21,7 @@ class CreatePostsTable extends Migration
             $table->text('body');
             $table->string('slug');
             $table->timestamps();
+            $table->dateTime('release_at');
         });
     }
 

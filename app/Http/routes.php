@@ -26,14 +26,18 @@ Route::group(['middleware' => ['web']], function () {
 
     // Your site landing page gets called here
     Route::get('/', 'HomeController@index');
-
-    // Your site landing page gets called here
     Route::get('/about', 'HomeController@about');
-
-    // Blog routes
+    
+    // Blog urls
     Route::get('/blog', 'BlogController@index')->middleware('guest');
     Route::get('/blog/{date}', 'BlogController@getPostsAtDate')->middleware('guest');
     Route::get('/blog/{date}/{slug}', 'BlogController@getPost')->middleware('guest');
+
+    // Preparation for rewriting better routes 
+    Route::get('blog/{year}', 'BlogController@getPostsAtYear')->middleware('guest');
+    Route::get('blog/{year}/{month}', 'BlogController@getPostsAtYearMonth')->middleware('guest');
+    Route::get('blog/{year}/{month}/{day}', 'BlogController@getPostsAtYearMonthDay')->middleware('guest');
+    Route::get('blog/{year}/{month}/{day}/{slug}', 'BlogController@getPostsAtYearMonthDaySlug')->middleware('middleware');
 
     // Admin panel
     Route::get('/posts', 'PostController@index');
@@ -46,17 +50,13 @@ Route::group(['middleware' => ['web']], function () {
     // Authentication Routes...
     Route::auth();
 
-    // Registration Routes...
+    // Registration Routes...//
     
-    // Uncomment the below routes after you have registered a user
-
-    // They over write the register routes to forbid users to enter the application
-
-    // Route::get('register', function(){
-    //     return view('errors.404');
-    // });
-    // Route::post('register', function(){
-    //     return view('errors.404');
-    // });
+    Route::get('register', function(){
+        return view('errors.404');
+    });
+    Route::post('register', function(){
+        return view('errors.404');
+    });
 
 });

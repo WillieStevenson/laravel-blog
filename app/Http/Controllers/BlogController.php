@@ -37,8 +37,17 @@ class BlogController extends Controller
      */
     public function index(Request $request)
     {
+        $all_posts = $this->posts->getAll();
+
+        foreach ($all_posts as $single_post) {
+            $shortened_post = substr($single_post->body, 0, strpos($single_post->body,"</p>")) . "</p>";
+            $read_more_link = '<p><a href="/blog/' . date('Y-m-d', strtotime($single_post->created_at)) . '/' . $single_post->slug . '">Read more</a></p>'; 
+
+            $single_post->body = $shortened_post . $read_more_link;
+        }
+
         return view('welcome', [
-            'posts' => $this->posts->getAll(),
+            'posts' => $all_posts,
         ]);
     }
 
@@ -50,6 +59,15 @@ class BlogController extends Controller
      */
     public function getPostsAtDate(Request $request, $date)
     {
+        $all_posts = $this->posts->getAll();
+
+        foreach ($all_posts as $single_post) {
+            $shortened_post = substr($single_post->body, 0, strpos($single_post->body,"</p>")) . "</p>";
+            $read_more_link = '<p><a href="/blog/' . date('Y-m-d', strtotime($single_post->created_at)) . '/' . $single_post->slug . '">Read more</a></p>'; 
+
+            $single_post->body = $shortened_post . $read_more_link;
+        }
+        
         return view('welcome', [
             'posts' => $this->posts->getPostsAtDate($date),
         ]);
@@ -67,4 +85,5 @@ class BlogController extends Controller
             'posts' => $this->posts->getPost($date, $slug),
         ]);
     }
+
 }
