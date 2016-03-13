@@ -27,6 +27,5 @@ The reason I built this was because I wanted a small, light-weight, minimalistic
 ## To Do
 
 1. Add a commenting system.
-2. Shorten article length so that full article doesn't show unless heading is clicked.
 3. Add pagination.
 4. Add an easier way to upload images for a post and generate the relative links.
