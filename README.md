@@ -1,8 +1,7 @@
 # laravel-blog
 A simple blog using laravel
 
-This is the blog that I built to use as a template for all of my sites.
-The reason I built this was because I wanted a small, light-weight, minimalistic, and no outside dependency application (other than what laravel requires).
+This is a small, light-weight, no outside dependency (other than what laravel requires) blog app that I built to use as a template for all of my sites.
 
 ## Installation
 
