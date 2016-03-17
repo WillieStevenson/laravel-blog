@@ -18,10 +18,8 @@ This is a small, light-weight, no outside dependency (other than what laravel re
 ## Posting
 
 1. You must login to post blog posts. You can login at the url localhost/login.
-2. HTML can be used in the body of the post to format your post.
-3. If adding images to a blog post, add an images folder to the public folder. And dump images there.
-4. Push them to the server and the relevant folder.
-
+2. HTML can be used to format the body of your post.
+3. If adding images to a blog post, create an images folder (for example, in the public directory) and dump your images there. Use an html img tag and relevant src in the body of the post to link in your images.
 
 ## To Do
 
